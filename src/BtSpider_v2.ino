@@ -1,4 +1,4 @@
-/******************************************************
+******************************************************
  * @name: AUTO SPIDER No,2 (version0.01)              *
  *                                                    *
  * @brief:                                            *
@@ -56,7 +56,7 @@ float UsrSwTime;
 int SafetyFlag,StackFlag;
 float SlipTime,StackTime,FallTime;
 int ReptCnt = 0;
-int ble_flag = 0;
+int bt_flag = 0;
 
 #define INIT 0
 #define STOP 1
@@ -110,14 +110,16 @@ void setup(){
 
 void loop(){
 
-    if(BtSerial.available() > 0){
+    /*if(BtSerial.available() > 0){
       Serial.write(BtSerial.read());
-      ble_flag = 1;
+      bt_flag = 1;
     }else{
-      ble_flag = 0;
-    }
+      bt_flag = 0;
+    }*/
+    bt_flag = BtSerial.available(); /*omazinai*/
 
-  if(ble_flag == 1){
+
+  if(bt_flag == 1){
     if(millis() == RunTime + WaitTime){
 
         RunTime += WaitTime;
