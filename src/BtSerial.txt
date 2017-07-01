@@ -1,0 +1,29 @@
+#include"Arduino.h"
+#include"SoftwareSerial.h"
+
+const int RxPin = 5;
+const int TxPin = 4;
+
+int BtStat = 0;
+
+#define ON 1
+#define OFF 0
+
+SoftwareSerial BtSerial(RxPin,TxPin);
+
+void setup()
+{
+  Serial.begin(9600);
+  BtSerial.begin(9600);
+}
+
+void loop()
+{
+  if(BtSerial.available() > 0){
+    if(BtSerial.read() == 99)Serial.print("ON");
+  }else{
+    Serial.print("OFF");
+  }
+  delay(100);
+
+}
